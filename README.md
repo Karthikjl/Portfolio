@@ -1,12 +1,24 @@
 <div align="center">
 
+```
+██╗  ██╗ █████╗ ██████╗ ████████╗██╗  ██╗██╗██╗  ██╗███████╗██╗   ██╗ █████╗ ███╗   ██╗
+██║ ██╔╝██╔══██╗██╔══██╗╚══██╔══╝██║  ██║██║██║ ██╔╝██╔════╝╚██╗ ██╔╝██╔══██╗████╗  ██║
+█████╔╝ ███████║██████╔╝   ██║   ███████║██║█████╔╝ █████╗   ╚████╔╝ ███████║██╔██╗ ██║
+██╔═██╗ ██╔══██║██╔══██╗   ██║   ██╔══██║██║██╔═██╗ ██╔══╝    ╚██╔╝  ██╔══██║██║╚██╗██║
+██║  ██╗██║  ██║██║  ██║   ██║   ██║  ██║██║██║  ██╗███████╗   ██║   ██║  ██║██║ ╚████║
+╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝
+```
 
-**Retro Terminal Portfolio — React + Supabase + Vite**
+**Full Stack Developer | Unity Game Developer | Android Developer**
+
+*Chennai, India*
 
 ![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react)
 ![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=flat-square&logo=vite)
 ![Supabase](https://img.shields.io/badge/Supabase-Database-3ECF8E?style=flat-square&logo=supabase)
 ![GitHub Pages](https://img.shields.io/badge/Hosted-GitHub%20Pages-181717?style=flat-square&logo=github)
+![Java](https://img.shields.io/badge/Java-Android-orange?style=flat-square&logo=android)
+![Unity](https://img.shields.io/badge/Unity-Game%20Dev-black?style=flat-square&logo=unity)
 
 </div>
 
@@ -14,20 +26,24 @@
 
 ## What Is This
 
-A hacker-aesthetic developer portfolio with a CRT terminal look, Tamil matrix rain / starfield background, sci-fi cursor, and a secure hidden admin panel to manage projects — all powered by Supabase as the backend, deployed on GitHub Pages with zero server costs.
+A retro CRT terminal-style personal portfolio for **Karthikeyan** — a full stack, Android, and Unity game developer from Chennai. Built with a hacker aesthetic featuring Tamil character matrix rain, a starfield with a black hole vortex, sci-fi reticle cursor, and a fully secure hidden admin panel — all powered by Supabase and deployed on GitHub Pages with zero server costs.
 
 ---
 
 ## Features
 
-- **Retro terminal UI** — scanlines, CRT vignette, glitch effects, Tamil character rain
-- **Starfield + black hole** background — stars spiral into a vortex on the right edge
-- **Admin panel** at `/#/admin` — hidden, secured with Supabase Auth
-- **Project CRUD** — add, edit, delete, and reorder projects from the admin panel
-- **Site settings** — change font and background type live from admin (no rebuild needed)
-- **User BG toggle** — visitors can turn the background animation on/off (saved to localStorage)
-- **Fully responsive** — works on mobile, tablet, and desktop
-- **Security hardened** — URL sanitization, settings allowlist, login rate limiting, RLS policies
+- **Retro terminal UI** — CRT scanlines, vignette, glitch name effect with Tamil characters
+- **Dual backgrounds** — Tamil matrix rain or starfield with black hole vortex (right edge)
+- **Sci-fi reticle cursor** — targeting circle with RGB chromatic aberration on glitch
+- **Boot sequence** — animated terminal startup on first visit
+- **Admin panel** at `/#/admin` — hidden route, secured with Supabase Auth
+- **Project CRUD** — add, edit, delete projects with title, description, links, tech stack, thumbnail
+- **Drag & drop reorder** — reorder projects with drag or ▲▼ buttons, saves to Supabase
+- **Live site settings** — change font, background type, animation intensity from admin — no rebuild
+- **Scroll reveal animations** — 4 presets (None / Subtle / Medium / Heavy) controlled from admin
+- **User BG toggle** — visitors can turn background animation on/off, saved to `localStorage`
+- **Fully responsive** — mobile hamburger menu, tablet, desktop
+- **Security hardened** — URL sanitization, settings allowlist, login rate limiting (5 attempts / 2min lockout), RLS policies
 
 ---
 
@@ -35,34 +51,31 @@ A hacker-aesthetic developer portfolio with a CRT terminal look, Tamil matrix ra
 
 ```
 portfolio/
-├── public/
 ├── src/
 │   ├── components/
-│   │   ├── BootSequence.jsx      # Animated terminal boot screen
-│   │   ├── CursorReticle.jsx     # Sci-fi targeting cursor
-│   │   ├── MatrixRain.jsx        # Tamil matrix rain background
-│   │   ├── ProjectCard.jsx       # Project display card
-│   │   ├── ProjectReorder.jsx    # Drag & drop project ordering
-│   │   ├── SiteSettings.jsx      # Admin font + bg settings UI
-│   │   ├── StarField.jsx         # Starfield + blackhole background
-│   │   ├── TerminalWindow.jsx    # Reusable terminal window widget
-│   │   └── Toast.jsx             # Toast notification system
+│   │   ├── BootSequence.jsx        # Terminal boot animation (runs once per session)
+│   │   ├── CursorReticle.jsx       # Sci-fi targeting cursor with RGB split on glitch
+│   │   ├── MatrixRain.jsx          # Tamil character matrix rain (3-layer depth)
+│   │   ├── ProjectCard.jsx         # Project display card with expand/collapse
+│   │   ├── ProjectReorder.jsx      # Drag & drop + arrow button project ordering
+│   │   ├── SiteSettings.jsx        # Admin settings panel (bg, font, animations)
+│   │   ├── StarField.jsx           # Starfield + black hole vortex background
+│   │   ├── TerminalWindow.jsx      # Reusable macOS-style terminal window widget
+│   │   └── Toast.jsx               # Toast notification system
 │   ├── lib/
-│   │   ├── security.js           # URL sanitizer, rate limiter, settings validator
-│   │   ├── supabase.js           # Supabase client
-│   │   └── useSettings.js        # Site settings hook (font, background)
+│   │   ├── security.js             # URL sanitizer, login rate limiter, settings validator
+│   │   ├── supabase.js             # Supabase client
+│   │   └── useSettings.js          # Live settings hook (font, bg, animations)
 │   ├── pages/
-│   │   ├── Admin.jsx             # Admin dashboard (auth protected)
-│   │   └── Portfolio.jsx         # Public portfolio page
+│   │   ├── Admin.jsx               # Admin dashboard — Projects, Reorder, Settings tabs
+│   │   └── Portfolio.jsx           # Public portfolio — Hero, Projects, About, Contact
 │   ├── styles/
-│   │   └── terminal.css          # Global retro theme + responsive CSS
-│   ├── App.jsx                   # Router setup
-│   └── main.jsx                  # React entry point
-├── .env.example                  # Environment variable template
-├── .github/
-│   └── workflows/
-│       └── deploy.yml            # Auto-deploy to GitHub Pages on push
-├── 404.html                      # SPA routing fix for GitHub Pages
+│   │   └── terminal.css            # Global retro theme, CSS variables, responsive
+│   ├── App.jsx                     # HashRouter — / and /admin routes
+│   └── main.jsx                    # React entry point
+├── .env.example                    # Environment variable template
+├── .github/workflows/deploy.yml    # GitHub Actions — auto deploy to Pages on push
+├── 404.html                        # SPA routing fix for GitHub Pages
 ├── index.html
 ├── package.json
 └── vite.config.js
@@ -92,7 +105,7 @@ npm install
 
 **a.** Create a free project at [supabase.com](https://supabase.com)
 
-**b.** Go to **SQL Editor** and run this to create the database:
+**b.** Go to **SQL Editor** and run this full setup:
 
 ```sql
 -- Projects table
@@ -116,7 +129,7 @@ CREATE TABLE site_settings (
 );
 
 -- Enable Row Level Security
-ALTER TABLE projects     ENABLE ROW LEVEL SECURITY;
+ALTER TABLE projects      ENABLE ROW LEVEL SECURITY;
 ALTER TABLE site_settings ENABLE ROW LEVEL SECURITY;
 
 -- Public can read everything
@@ -133,14 +146,15 @@ CREATE POLICY "Auth write settings"   ON site_settings FOR ALL   USING (auth.rol
 INSERT INTO site_settings (key, value) VALUES ('font',          'share-tech-mono');
 INSERT INTO site_settings (key, value) VALUES ('matrix_preset', 'default');
 INSERT INTO site_settings (key, value) VALUES ('bg_type',       'starfield');
+INSERT INTO site_settings (key, value) VALUES ('anim_preset',   'medium');
 ```
 
-**c.** Create your admin account — go to **Authentication → Users → Add User → Create New User**
-- Use any email (e.g. `admin@portfolio.com`)
-- Use a strong password (12+ characters)
-- Check **Auto Confirm User**
+**c.** Create your admin account → **Authentication → Users → Add User → Create New User**
+- Email: anything (e.g. `admin@portfolio.com`) — doesn't need to be real
+- Password: 12+ characters, mix of symbols and numbers
+- Check ✅ **Auto Confirm User**
 
-**d.** Disable public signups — go to **Authentication → Settings** → turn off **Enable new user signups**
+**d.** Disable public signups → **Authentication → Settings** → turn off **Enable new user signups**
 
 ### 4. Configure Environment
 
@@ -148,30 +162,38 @@ INSERT INTO site_settings (key, value) VALUES ('bg_type',       'starfield');
 cp .env.example .env
 ```
 
-Open `.env` and fill in your credentials from **Supabase → Settings → API**:
+Fill in your credentials from **Supabase → Settings → API**:
 
 ```env
 VITE_SUPABASE_URL=https://your-project-id.supabase.co
 VITE_SUPABASE_ANON_KEY=your-anon-public-key-here
 ```
 
-> ⚠️ Never commit `.env` — it is in `.gitignore`
+> ⚠️ Never commit `.env` — it is already in `.gitignore`
 
-### 5. Update Your Personal Info
+### 5. Customize Your Info
 
-Open `src/pages/Portfolio.jsx` and update the `ME` object at the top:
+Open `src/pages/Portfolio.jsx` and update the `ME` object and `SKILLS` array at the top:
 
 ```js
 const ME = {
-  name:      'YOUR NAME',
-  role:      'YOUR ROLE',
-  location:  'Your City, Country',
+  name:      'KARTHIKEYAN',
+  role:      'Full Stack Developer | Unity Game Developer | Android Developer',
+  location:  'Chennai, India',
   bio:       'Your bio here...',
   email:     'your@email.com',
-  github:    'https://github.com/yourusername',
-  linkedin:  'https://www.linkedin.com/in/yourprofile',
+  github:    'https://github.com/Karthikjl',
+  linkedin:  'https://www.linkedin.com/in/karthikeyan-jl',
   available: true,
 }
+
+const SKILLS = [
+  { name: 'React / Next.js', level: 90, color: 'var(--cyan)'  },
+  { name: 'Node.js',         level: 85, color: 'var(--green)' },
+  { name: 'Java / Android',  level: 88, color: 'var(--amber)' },
+  { name: 'Unity / C#',      level: 82, color: 'var(--green)' },
+  // add or remove skills here
+]
 ```
 
 ### 6. Run Locally
@@ -188,10 +210,7 @@ Admin panel: [http://localhost:5173/#/admin](http://localhost:5173/#/admin)
 
 ## Deploy to GitHub Pages
 
-### One-Time Setup
-
-**1.** Push your code to GitHub:
-
+**1.** Push to GitHub:
 ```bash
 git init
 git add .
@@ -201,73 +220,69 @@ git branch -M main
 git push -u origin main
 ```
 
-**2.** Add Supabase secrets to GitHub — go to repo → **Settings → Secrets and variables → Actions → New repository secret**:
+**2.** Add secrets → repo **Settings → Secrets and variables → Actions**:
 
 | Secret Name | Value |
 |---|---|
 | `VITE_SUPABASE_URL` | Your Supabase project URL |
 | `VITE_SUPABASE_ANON_KEY` | Your Supabase anon key |
 
-**3.** Enable GitHub Pages — go to repo → **Settings → Pages → Source → GitHub Actions**
+**3.** Enable Pages → **Settings → Pages → Source → GitHub Actions**
 
-**4.** Every push to `main` automatically builds and deploys. Check progress under the **Actions** tab.
+Every push to `main` auto-builds and deploys via GitHub Actions.
 
-Your live site: `https://Karthikjl.github.io/YOUR_REPO_NAME/`
-
-Admin panel: `https://Karthikjl.github.io/YOUR_REPO_NAME/#/admin`
+**Live site:** `https://Karthikjl.github.io/YOUR_REPO_NAME/`  
+**Admin panel:** `https://Karthikjl.github.io/YOUR_REPO_NAME/#/admin`
 
 ---
 
 ## Admin Panel Guide
 
-Access the hidden admin panel via the footer or directly at `/#/admin`.
+Access via the hidden link in the footer, or directly at `/#/admin`.
 
-### Projects Tab (`⌘ PROJECTS`)
+### ⌘ Projects Tab
 | Action | How |
 |---|---|
-| Add project | Click **+ INSERT NEW PROJECT** |
-| Edit project | Click **EDIT** on any project row |
-| Delete project | Click **DELETE** → confirm |
-| Required fields | Title only — everything else is optional |
+| Add project | **+ INSERT NEW PROJECT** |
+| Edit project | **EDIT** on any row |
+| Delete project | **DELETE** → confirm |
+| Fields | Title (required), description, live URL, GitHub URL, tech stack, thumbnail URL, status |
+| Status | `COMPLETED` = done and live · `WIP` = still in progress |
 
-### Reorder Tab (`⇅ REORDER`)
-- **Drag and drop** rows to reorder
-- **▲ ▼ buttons** for precise one-step movement (great on mobile)
-- Click **SAVE ORDER** — public portfolio updates immediately
+### ⇅ Reorder Tab
+- **Drag rows** to any position using the dot handle
+- **▲ ▼ buttons** for one-step movement (works great on mobile)
+- **SAVE ORDER** saves to Supabase — public portfolio updates instantly
 
-### Settings Tab (`⚙ SETTINGS`)
+### ⚙ Settings Tab
 | Setting | Options |
 |---|---|
-| Background type | Starfield, Matrix Rain, Off |
-| Matrix intensity | Subtle, Default, Intense, Storm |
-| Font | 8 terminal fonts (Share Tech Mono, JetBrains Mono, Fira Code, etc.) |
+| Background | Starfield (black hole vortex), Matrix Rain (Tamil chars), Off |
+| Matrix intensity | Subtle · Default · Intense · Storm |
+| Animations | None · Subtle · Medium · Heavy |
+| Font | Share Tech Mono · JetBrains Mono · Fira Code · IBM Plex Mono · Courier Prime · Source Code Pro · Space Mono · Inconsolata |
 
-Changes apply live to the public portfolio — no rebuild required.
+All changes apply live to the public portfolio — no rebuild required.
 
 ---
 
-## Customization
+## Customization Reference
 
-### Change Skills
-Edit the `SKILLS` array in `src/pages/Portfolio.jsx`:
-```js
-const SKILLS = [
-  { name: 'React',   level: 90, color: 'var(--cyan)'  },
-  { name: 'Node.js', level: 85, color: 'var(--green)' },
-  // add more...
-]
-```
+| What | Where |
+|---|---|
+| Name, bio, links | `ME` object in `src/pages/Portfolio.jsx` |
+| Skills + levels | `SKILLS` array in `src/pages/Portfolio.jsx` |
+| Boot messages | `BOOT_LINES` in `src/components/BootSequence.jsx` |
+| Colors | CSS variables in `src/styles/terminal.css` |
+| Nav items | `NAV_ITEMS` array in `src/pages/Portfolio.jsx` |
 
-### Change Boot Messages
-Edit `BOOT_LINES` in `src/components/BootSequence.jsx`
-
-### Change Colors
-Edit CSS variables in `src/styles/terminal.css`:
+**Color variables:**
 ```css
 :root {
   --green:  #00ff41;   /* main accent */
   --cyan:   #00e5ff;   /* secondary */
-  --amber:  #ffb000;   /* warning/highlight */
+  --amber:  #ffb000;   /* highlight */
+  --red:    #ff2244;   /* danger */
 }
 ```
 
@@ -280,30 +295,34 @@ Edit CSS variables in `src/styles/terminal.css`:
 | React 18 | UI framework |
 | Vite 5 | Build tool & dev server |
 | React Router 6 | Client-side routing (HashRouter for GitHub Pages) |
-| Supabase | Database + Auth backend |
-| Google Fonts | Dynamic font loading |
-| GitHub Actions | CI/CD pipeline |
-| GitHub Pages | Static hosting |
+| Supabase | PostgreSQL database + Auth backend |
+| Google Fonts | Dynamic font loading (8 monospace options) |
+| GitHub Actions | CI/CD — auto build and deploy on push |
+| GitHub Pages | Static hosting (free) |
 
 ---
 
 ## Security
 
-- All URLs from database are sanitized — only `https://` and `http://` allowed
+- URLs from database sanitized — only `https://` and `http://` allowed, blocks `javascript:` injection
 - Settings values validated against strict allowlist before applying to DOM
-- Login rate limited — 5 attempts max, 2 minute lockout
-- Supabase RLS — public users can only read, writes require authentication
-- Public signups disabled — only manually created admin accounts work
-- No secrets in source code — all credentials via environment variables
+- Login rate limited — 5 attempts max, 2 minute client-side lockout + Supabase server-side limits
+- Supabase RLS — public users can only `SELECT`, writes require authentication
+- Public signups disabled — only manually created admin accounts can log in
+- No secrets in source — all credentials via environment variables, never committed
 
 ---
 
 ## License
 
-MIT — feel free to fork and customize for your own portfolio.
+MIT - free to fork, customize, and use for your own portfolio.
 
 ---
 
 <div align="center">
-Built by <strong>Karthikeyan</strong> 
+
+Built by **Karthikeyan**
+
+<sub>Designed & developed with the assistance of <a href="https://claude.ai">Claude AI</a> by Anthropic</sub>
+
 </div>
