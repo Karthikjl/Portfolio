@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase.js'
 import { sanitizeSetting } from '../lib/security.js'
 
-// ── FONT OPTIONS ──────────────────────────────────────
 export const FONT_OPTIONS = [
   { id: 'share-tech-mono', label: 'Share Tech Mono', description: 'Default — clean hacker feel',     family: 'Share Tech Mono', googleUrl: 'family=Share+Tech+Mono' },
   { id: 'jetbrains-mono',  label: 'JetBrains Mono',  description: 'Modern IDE terminal',             family: 'JetBrains Mono',  googleUrl: 'family=JetBrains+Mono:wght@400;700' },
@@ -14,7 +13,6 @@ export const FONT_OPTIONS = [
   { id: 'inconsolata',     label: 'Inconsolata',      description: 'Narrow, dense, hacker-ish',       family: 'Inconsolata',      googleUrl: 'family=Inconsolata:wght@400;700' },
 ]
 
-// ── MATRIX PRESETS ────────────────────────────────────
 export const MATRIX_PRESETS = [
   { id: 'subtle',  label: 'Subtle',  description: 'Barely visible — content first', opacity: 0.022, speed: 0.7, density: 0.7, glowIntensity: 0.5 },
   { id: 'default', label: 'Default', description: 'Balanced — original feel',       opacity: 0.035, speed: 1.0, density: 1.0, glowIntensity: 1.0 },
@@ -22,21 +20,26 @@ export const MATRIX_PRESETS = [
   { id: 'storm',   label: 'Storm',   description: 'Maximum chaos — full hacker',    opacity: 0.09,  speed: 1.8, density: 1.6, glowIntensity: 2.5 },
 ]
 
-// ── BG TYPE OPTIONS ───────────────────────────────────
 export const BG_TYPES = [
   { id: 'starfield', label: 'Starfield',   description: 'Stars + blackhole vortex', icon: '✦' },
   { id: 'matrix',    label: 'Matrix Rain', description: 'Tamil character rain',     icon: 'அ' },
   { id: 'off',       label: 'Off',         description: 'No background',            icon: '○' },
 ]
 
-// ── DEFAULT SETTINGS ──────────────────────────────────
+export const ANIM_PRESETS = [
+  { id: 'none',   label: 'None',   description: 'No animations — instant load',    icon: '○' },
+  { id: 'subtle', label: 'Subtle', description: 'Soft fades, minimal movement',    icon: '◎' },
+  { id: 'medium', label: 'Medium', description: 'Smooth reveals — default feel',   icon: '◉' },
+  { id: 'heavy',  label: 'Heavy',  description: 'Cinematic entrances, big slides', icon: '●' },
+]
+
 export const DEFAULT_SETTINGS = {
   font:          'share-tech-mono',
   matrix_preset: 'default',
   bg_type:       'starfield',
+  anim_preset:   'medium',
 }
 
-// ── HELPERS ───────────────────────────────────────────
 function injectFont(googleUrl) {
   const existing = document.getElementById('dynamic-font')
   if (existing) existing.remove()
@@ -51,7 +54,6 @@ function applyFont(family) {
   document.documentElement.style.setProperty('--font-mono', `'${family}', monospace`)
 }
 
-// ── HOOK ──────────────────────────────────────────────
 export function useSettings() {
   const [settings, setSettings] = useState(DEFAULT_SETTINGS)
   const [loading, setLoading] = useState(true)
@@ -62,7 +64,6 @@ export function useSettings() {
     const { data } = await supabase.from('site_settings').select('key, value')
     const map = { ...DEFAULT_SETTINGS }
     if (data) data.forEach(row => {
-      // Only accept known safe values — reject anything unexpected
       const safe = sanitizeSetting(row.key, row.value)
       if (safe !== null) map[row.key] = safe
     })
@@ -79,15 +80,14 @@ export function useSettings() {
 
   async function saveSetting(key, value) {
     const safe = sanitizeSetting(key, value)
-    if (safe === null) return // reject unknown keys/values silently
+    if (safe === null) return
     await supabase.from('site_settings').upsert({ key, value: safe }, { onConflict: 'key' })
     const next = { ...settings, [key]: safe }
     setSettings(next)
     applyAllSettings(next)
   }
 
-  const matrixConfig = MATRIX_PRESETS.find(p => p.id === settings.matrix_preset)
-    || MATRIX_PRESETS[1]
+  const matrixConfig = MATRIX_PRESETS.find(p => p.id === settings.matrix_preset) || MATRIX_PRESETS[1]
 
   return { settings, loading, saveSetting, matrixConfig }
 }

@@ -406,3 +406,17 @@ textarea.input { resize: vertical; min-height: 100px; }
     justify-content: flex-end;
   }
 }
+
+/* ── ABOUT GRID — prevent panels from stretching to equal height ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  align-items: start;
+}
+
+.about-grid > * {
+  align-self: start !important;
+}

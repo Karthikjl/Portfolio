@@ -29,7 +29,8 @@ const ALLOWED_FONT_IDS = [
 ]
 const ALLOWED_MATRIX_PRESETS = ['subtle', 'default', 'intense', 'storm']
 const ALLOWED_BG_TYPES = ['starfield', 'matrix', 'off']
-const ALLOWED_SETTING_KEYS = ['font', 'matrix_preset', 'bg_type']
+const ALLOWED_ANIM_PRESETS = ['none', 'subtle', 'medium', 'heavy']
+const ALLOWED_SETTING_KEYS = ['font', 'matrix_preset', 'bg_type', 'anim_preset']
 
 export function sanitizeSetting(key, value) {
   if (!ALLOWED_SETTING_KEYS.includes(key)) return null
@@ -37,6 +38,7 @@ export function sanitizeSetting(key, value) {
   if (key === 'font'          && !ALLOWED_FONT_IDS.includes(value))        return null
   if (key === 'matrix_preset' && !ALLOWED_MATRIX_PRESETS.includes(value))  return null
   if (key === 'bg_type'       && !ALLOWED_BG_TYPES.includes(value))        return null
+  if (key === 'anim_preset'   && !ALLOWED_ANIM_PRESETS.includes(value))     return null
   return value
 }
 
