@@ -48,6 +48,16 @@ A retro CRT terminal-style personal portfolio for **Karthikeyan** - a full stack
 - **Security hardened** - URL sanitization, settings allowlist, login rate limiting (5 attempts / 2min lockout), RLS policies
 
 ---
+## Images
+
+### Site
+<img width="1857" height="954" alt="image" src="https://github.com/user-attachments/assets/ffc24442-9f22-4c3c-9e67-9761f9fe52f6" />
+
+---
+
+### Admin Pannel
+<img width="1857" height="954" alt="image" src="https://github.com/user-attachments/assets/0dd07221-6fe5-4f98-a317-e534c6d04859" />
+
 
 ## Project Structure
 
