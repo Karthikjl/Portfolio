@@ -1,0 +1,142 @@
+# ── DEPENDENCIES ──────────────────────────────────────
+node_modules/
+.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# ── BUILD OUTPUT ──────────────────────────────────────
+dist/
+dist-ssr/
+build/
+out/
+.output/
+
+# ── ENVIRONMENT — NEVER COMMIT ────────────────────────
+.env
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+.env.*.local
+
+# ── VITE SPECIFIC ─────────────────────────────────────
+*.local
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# ── OS FILES ──────────────────────────────────────────
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+Icon
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+
+# ── EDITOR / IDE ──────────────────────────────────────
+# VSCode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# JetBrains (WebStorm, IntelliJ)
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea_modules/
+
+# Vim / Neovim
+*.swp
+*.swo
+*.swn
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+Session.vim
+Sessionx.vim
+.netrwhist
+tags
+[._]ss[a-rt-v].sw[be]
+[._]sss[a-gi-z].sw[be]
+
+# Emacs
+*~
+\#*\#
+.\#*
+*.elc
+auto-save-list
+
+# Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+# ── LOGS ──────────────────────────────────────────────
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ── TESTING & COVERAGE ────────────────────────────────
+coverage/
+*.lcov
+.nyc_output/
+lib-cov/
+
+# ── TYPESCRIPT ────────────────────────────────────────
+*.tsbuildinfo
+
+# ── CACHE ─────────────────────────────────────────────
+.cache/
+.parcel-cache/
+.turbo/
+.eslintcache
+.stylelintcache
+.prettiercache
+
+# ── PACKAGE MANAGER LOCKS (keep only one) ─────────────
+# Uncomment whichever you DON'T use:
+# package-lock.json  # if using yarn
+# yarn.lock          # if using npm
+# pnpm-lock.yaml     # if using npm or yarn
+
+# ── MISC ──────────────────────────────────────────────
+*.tgz
+*.zip
+*.tar.gz
+.grunt/
+.fusebox/
+.dynamodb/
+.serverless/
+.netlify/
+
+# ── SUPABASE LOCAL ────────────────────────────────────
+supabase/.temp/
+supabase/functions/.cache/
