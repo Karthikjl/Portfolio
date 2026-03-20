@@ -96,8 +96,8 @@ git --version
 ### 2. Clone & Install
 
 ```bash
-git clone https://github.com/Karthikjl/YOUR_REPO_NAME.git
-cd YOUR_REPO_NAME
+git clone https://github.com/Karthikjl/Portfolio
+cd Portfolio
 npm install
 ```
 
@@ -215,7 +215,7 @@ Admin panel: [http://localhost:5173/#/admin](http://localhost:5173/#/admin)
 git init
 git add .
 git commit -m "initial commit"
-git remote add origin https://github.com/Karthikjl/YOUR_REPO_NAME.git
+git remote add origin <YOUR_REPO_LINK>
 git branch -M main
 git push -u origin main
 ```
