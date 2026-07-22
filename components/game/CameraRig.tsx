@@ -15,12 +15,22 @@ const MAX_LOOK_PITCH = 1.2;
 // the car isn't actually driving toward.
 const RECENTER_RATE = 3;
 
+// One-time intro: camera starts high above the island and eases down into
+// the normal chase position over this duration before handing off control.
+const INTRO_DURATION = 2.5;
+const INTRO_START_POSITION = new THREE.Vector3(0, 40, 60);
+
+function easeOutCubic(t: number): number {
+  return 1 - Math.pow(1 - t, 3);
+}
+
 export function CameraRig({ targetRef }: { targetRef: React.RefObject<THREE.Group> }) {
   const { camera, gl } = useThree();
   const keys = useKeyboardControls();
   const desiredPosition = useRef(new THREE.Vector3());
   const lookYaw = useRef(0);
   const lookPitch = useRef(0);
+  const introElapsed = useRef(0);
 
   // Click-to-look: engages pointer lock so mouse movement orbits the camera
   // around the car (independent of steering). The browser exits pointer
@@ -75,7 +85,13 @@ export function CameraRig({ targetRef }: { targetRef: React.RefObject<THREE.Grou
       .applyEuler(orbit)
       .add(target.position);
 
-    camera.position.lerp(desiredPosition.current, 1 - Math.exp(-LERP_FACTOR * delta));
+    if (introElapsed.current < INTRO_DURATION) {
+      introElapsed.current += delta;
+      const t = easeOutCubic(Math.min(introElapsed.current / INTRO_DURATION, 1));
+      camera.position.lerpVectors(INTRO_START_POSITION, desiredPosition.current, t);
+    } else {
+      camera.position.lerp(desiredPosition.current, 1 - Math.exp(-LERP_FACTOR * delta));
+    }
     camera.lookAt(target.position.x, target.position.y + 1, target.position.z);
   });
 
